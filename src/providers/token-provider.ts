@@ -527,6 +527,55 @@ export const WBTC_MOONBEAM = new Token(
   'Wrapped BTC bridged using Multichain'
 );
 
+export const KAVA = new Token(
+  ChainId.KAVA,
+  '0xFa95D53e0B6e82b2137Faa70FD7E4a4DC70Da449',
+  18,
+  'KAVA',
+  'KAVA native asset'
+);
+
+export const DAI_KAVA = new Token(
+  ChainId.KAVA,
+  '0x5C7e299CF531eb66f2A1dF637d37AbB78e6200C7',
+  18,
+  'DAI',
+  'DAI Stablecoin bridged using Axelar Network'
+);
+
+export const USDC_KAVA = new Token(
+  ChainId.KAVA,
+  '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+  6,
+  'USDC',
+  'USDC Stablecoin bridged using Axelar Network'
+);
+
+// Kava Testnet Tokens
+export const KAVA_TESTNET = new Token(
+  ChainId.KAVA_TESTNET,
+  '0xFa95D53e0B6e82b2137Faa70FD7E4a4DC70Da449',
+  18,
+  'KAVA',
+  'KAVA native asset'
+);
+
+export const DAI_KAVA_TESTNET = new Token(
+  ChainId.KAVA_TESTNET,
+  '0xf12Bf50b634944536606b271225F1f6D84772A59',
+  18,
+  'DAI',
+  'DAI Stablecoin'
+);
+
+export const USDC_KAVA_TESTNET = new Token(
+  ChainId.KAVA_TESTNET,
+  '0xAa03872057AD496Bd6f3eE85b85e1e4DABdb1a5d',
+  6,
+  'aUSDC',
+  'USDC Stablecoin'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -655,6 +704,10 @@ export const DAI_ON = (chainId: ChainId): Token => {
       return DAI_CELO_ALFAJORES;
     case ChainId.MOONBEAM:
       return DAI_MOONBEAM;
+    case ChainId.KAVA:
+      return DAI_KAVA;
+    case ChainId.KAVA_TESTNET:
+      return DAI_KAVA_TESTNET;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
@@ -715,6 +768,10 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_ETHEREUM_GNOSIS;
     case ChainId.MOONBEAM:
       return USDC_MOONBEAM;
+    case ChainId.KAVA:
+      return USDC_KAVA;
+    case ChainId.KAVA_TESTNET:
+      return USDC_KAVA_TESTNET;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

@@ -22,12 +22,14 @@ import {
   DAI_RINKEBY_1,
   DAI_RINKEBY_2,
   ITokenProvider,
+  KAVA_TESTNET,
   TokenAccessor,
   UNI_ARBITRUM_RINKEBY,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_RINKEBY,
   USDC_ETHEREUM_GNOSIS,
+  USDC_KAVA_TESTNET,
   USDC_MAINNET,
   USDC_MOONBEAM,
   USDC_OPTIMISM,
@@ -129,6 +131,10 @@ export const CACHE_SEED_TOKENS: {
     DAI: DAI_MOONBEAM,
     WBTC: WBTC_MOONBEAM,
     WGLMR: WRAPPED_NATIVE_CURRENCY[ChainId.MOONBEAM],
+  },
+  [ChainId.KAVA_TESTNET]: {
+    KAVA: KAVA_TESTNET,
+    USDC: USDC_KAVA_TESTNET,
   },
 
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet

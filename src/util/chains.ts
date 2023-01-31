@@ -17,6 +17,8 @@ export enum ChainId {
   CELO_ALFAJORES = 44787,
   GNOSIS = 100,
   MOONBEAM = 1284,
+  KAVA = 2222,
+  KAVA_TESTNET = 2221,
 }
 
 // WIP: Gnosis, Moonbeam
@@ -35,6 +37,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.GÖRLI,
   ChainId.CELO_ALFAJORES,
   ChainId.CELO,
+  ChainId.KAVA_TESTNET,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -102,6 +105,10 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.GNOSIS;
     case 1284:
       return ChainId.MOONBEAM;
+    case 2222:
+      return ChainId.KAVA;
+    case 2221:
+      return ChainId.KAVA_TESTNET;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -124,6 +131,8 @@ export enum ChainName {
   CELO_ALFAJORES = 'celo-alfajores',
   GNOSIS = 'gnosis-mainnet',
   MOONBEAM = 'moonbeam-mainnet',
+  KAVA = 'kava-mainnet',
+  KAVA_TESTNET = 'kava-testnet',
 }
 
 export enum NativeCurrencyName {
@@ -133,6 +142,7 @@ export enum NativeCurrencyName {
   CELO = 'CELO',
   GNOSIS = 'XDAI',
   MOONBEAM = 'GLMR',
+  KAVA = 'KAVA',
 }
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.MAINNET]: [
@@ -194,6 +204,8 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.CELO_ALFAJORES]: ['CELO'],
   [ChainId.GNOSIS]: ['XDAI'],
   [ChainId.MOONBEAM]: ['GLMR'],
+  [ChainId.KAVA]: ['KAVA'],
+  [ChainId.KAVA_TESTNET]: ['KAVA'],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -213,6 +225,8 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.CELO_ALFAJORES]: NativeCurrencyName.CELO,
   [ChainId.GNOSIS]: NativeCurrencyName.GNOSIS,
   [ChainId.MOONBEAM]: NativeCurrencyName.MOONBEAM,
+  [ChainId.KAVA]: NativeCurrencyName.KAVA,
+  [ChainId.KAVA_TESTNET]: NativeCurrencyName.KAVA,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -249,6 +263,10 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.GNOSIS;
     case 1284:
       return ChainName.MOONBEAM;
+    case 2222:
+      return ChainName.KAVA;
+    case 2221:
+      return ChainName.KAVA_TESTNET;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -288,6 +306,10 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_CELO!;
     case ChainId.CELO_ALFAJORES:
       return process.env.JSON_RPC_PROVIDER_CELO_ALFAJORES!;
+    case ChainId.KAVA:
+      return process.env.JSON_RPC_PROVIDER_KAVA!;
+    case ChainId.KAVA_TESTNET:
+      return process.env.JSON_RPC_PROVIDER_KAVA_TESTNET!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -407,6 +429,20 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WGLMR',
     'Wrapped GLMR'
+  ),
+  [ChainId.KAVA]: new Token(
+    ChainId.KAVA,
+    '0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b',
+    18,
+    'WKAVA',
+    'Wrapped KAVA'
+  ),
+  [ChainId.KAVA_TESTNET]: new Token(
+    ChainId.KAVA,
+    '0xFa95D53e0B6e82b2137Faa70FD7E4a4DC70Da449',
+    18,
+    'WKAVA',
+    'Wrapped KAVA'
   ),
 };
 
